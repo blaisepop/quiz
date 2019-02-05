@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ResponsesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @response = responses(:one)
+    @resp = responses(:one)
 
   end
 
@@ -18,31 +18,31 @@ class ResponsesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create response" do
     assert_difference('Response.count') do
-      post responses_url, params: { response: { content: @response.content, question_id: @response.question_id } }
+      post responses_url, params: { response: { content: @resp.content, question_id: @resp.question_id } }
     end
 
     assert_redirected_to response_url(Response.last)
   end
 
   test "should show response" do
-    get response_url(@response)
+    get response_url(@resp)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_response_url(@response)
+    get edit_response_url(@resp)
     assert_response :success
   end
 
   test "should update response" do
-    puts @response.content.inspect
-    patch response_url(@response), params: { response: { content: @response.content, question_id: @response.question_id } }
-    assert_redirected_to response_url(@response)
+    puts @resp.content.inspect
+    patch response_url(@resp), params: { response: { content: @resp.content, question_id: @resp.question_id } }
+    assert_redirected_to response_url(@resp)
   end
 
   test "should destroy response" do
     assert_difference('Response.count', -1) do
-      delete response_url(@response)
+      delete response_url(@resp)
     end
 
     assert_redirected_to responses_url
