@@ -4,16 +4,16 @@
     <title>Quiz</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
    <ul>
-  
+
     <li> <%= link_to 'Questions',questions_path %> </li>
-    <li> <%= link_to 'Responses',responses_path %> </li>    
+    <li> <%= link_to 'Responses',responses_path %> </li>
    </ul>
 
     <%= yield %>
