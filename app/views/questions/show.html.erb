@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @question.title %></h1>
+<h2>Liste des réponses</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @question.responses.each do |response| %>
+      <tr>
+        <td><%= response.content %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<h2>Répondre à la question</h2>
+
+<%= form_with(model: Response.new, local: true) do |form| %>
+  
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+
+ <%= form.hidden_field :question_id, value:@question.id %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+
+<%= link_to 'Edit', edit_question_path(@question) %> |
+<%= link_to 'Back', questions_path %>
