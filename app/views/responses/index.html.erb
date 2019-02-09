@@ -13,8 +13,9 @@
 
   <tbody>
     <% @responses.each do |response| %>
+
     <tr>
-      <td><%= response.content %></td>
+      
       <td><%= link_to response.question.title, response.question %></td>
       <td><%= link_to 'Show', response %></td>
       <td><%= link_to 'Edit', edit_response_path(response) %></td>
