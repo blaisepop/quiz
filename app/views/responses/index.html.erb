@@ -15,12 +15,7 @@
     <% @responses.each do |response| %>
       <tr>
         <td><%= response.content %></td>
-        <% if reponse.question %>
-           <td><%= link_to response.question.title, response.question %></td>
-         <% else %>
-           <td>La réponse n'a pas été trouvée</td>
-         <% end %>
-      
+        <td><%= link_to response.question.title, response.question %></td>
         <td><%= link_to 'Show', response %></td>
         <td><%= link_to 'Edit', edit_response_path(response) %></td>
         <td><%= link_to 'Destroy', response, method: :delete, data: { confirm: 'Are you sure?' } %></td>
