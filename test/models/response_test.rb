@@ -16,4 +16,11 @@ class ResponseTest < ActiveSupport::TestCase
     r = responses(:bad_response)
     assert_not r.good?
   end
+
+  test "should be almost good response" do
+    r = responses(:almost_valid_response)
+    assert r.good?
+  end
+
+
 end
