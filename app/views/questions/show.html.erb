@@ -1,12 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @question.title %></h1>
+
+<p>La réponse correcte pour cette question est :
+<%=@question.valid_response%>
+</p>
+
 <h2>Liste des réponses</h2>
 <table>
   <thead>
     <tr>
       <th>Content</th>
-      
+      <th>Réponse correcte</th>
+
     </tr>
   </thead>
 
@@ -14,7 +20,11 @@
     <% @question.responses.each do |response| %>
       <tr>
         <td><%= response.content %></td>
-
+        <% if response.good? %>
+          <td>La réponse est correcte</td>
+        <% else %>
+          <td>La réponse est incorrecte</td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -22,7 +32,7 @@
 <h2>Répondre à la question</h2>
 
 <%= form_with(model: Response.new, local: true) do |form| %>
-  
+
 
   <div class="field">
     <%= form.label :content %>

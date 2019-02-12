@@ -7,3 +7,16 @@ one:
 two:
   content: MyString
   question: two
+
+
+valid_response:
+  content: Destiny's child
+  question: two
+
+bad_response:
+  content: wxc
+  question: two
+
+almost_valid_response:
+  content: Destiny's chile
+  question: two
