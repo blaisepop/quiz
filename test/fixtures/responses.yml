@@ -7,3 +7,12 @@ one:
 two:
   content: MyString
   question: two
+
+
+valid_response:
+  content: abc
+  question: two
+
+bad_response:
+  content: wxc
+  question: two

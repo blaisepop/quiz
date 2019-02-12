@@ -2,6 +2,8 @@
 
 one:
   title: MyString
+  valid_response: abc
 
 two:
   title: MyString
+  valid_response: abc

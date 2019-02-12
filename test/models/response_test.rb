@@ -4,4 +4,16 @@ class ResponseTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
+
+
+  test "should be good response" do
+    r = responses(:valid_response)
+    assert r.good?
+  end
+
+
+  test "should be bad response" do
+    r = responses(:bad_response)
+    assert_not r.good?
+  end
 end
