@@ -22,5 +22,10 @@ class ResponseTest < ActiveSupport::TestCase
     assert r.good?
   end
 
+  test "should be bad response with nil" do
+    r = responses(:bad_response)
+    r.content=nil
+    assert_not r.good?
+  end
 
 end
