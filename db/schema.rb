@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_183138) do
+ActiveRecord::Schema.define(version: 2019_02_17_172637) do
 
   create_table "questions", force: :cascade do |t|
     t.string "title"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 2019_02_10_183138) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_responses_on_question_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
