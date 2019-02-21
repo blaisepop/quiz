@@ -2,4 +2,6 @@
 
 <%= render 'form', user: @user %>
 
+<p>Dejà un compte? <%= link_to 'Connectez vous', new_user_session_path %>!</p>
+
 <%= link_to 'Back', users_path %>
