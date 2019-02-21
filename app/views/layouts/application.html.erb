@@ -10,13 +10,19 @@
   </head>
 
   <body>
-   <ul>
 
-    <li> <%= link_to 'Les questions',questions_path %> </li>
-    <li> <%= link_to 'Les réponses',responses_path %> </li>
-    <li> <%= link_to 'Comptes',users_path %> </li>
-   </ul>
+    <nav class='navbar'>
+      <%= link_to questions_path, class: 'button  button-outline' do %>
+        Quiz <small>by Blaise</small>
+      <% end %>
+      <%= link_to 'Les questions',questions_path, class: 'button  button-clear' %>
+      <%= link_to 'Les réponses',responses_path, class: 'button  button-clear' %>
+      <%= link_to 'Comptes',users_path, class: 'button  button-clear' %>
+    </nav>
 
-    <%= yield %>
+   <div class="container">
+     <%= yield %>
+   </div>
+
   </body>
 </html>
