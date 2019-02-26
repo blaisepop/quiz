@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    acts_as_authentic
   validates :email, uniqueness: {
     message: "déjà existant" }
 

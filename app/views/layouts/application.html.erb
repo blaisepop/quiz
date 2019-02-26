@@ -10,13 +10,27 @@
   </head>
 
   <body>
-   <ul>
 
-    <li> <%= link_to 'Les questions',questions_path %> </li>
-    <li> <%= link_to 'Les réponses',responses_path %> </li>
-    <li> <%= link_to 'Comptes',users_path %> </li>
-   </ul>
+    <nav class='navbar'>
+      <%= link_to questions_path, class: 'button  button-outline' do %>
+        Quiz <small>by Blaise</small>
+      <% end %>
+      <%= link_to 'Les questions',questions_path, class: 'button  button-clear' %>
+      <%= link_to 'Les réponses',responses_path, class: 'button  button-clear' %>
+      <%= link_to 'Comptes',users_path, class: 'button  button-clear' %>
+      <% if current_user%>
+        <%= link_to 'Mon compte',user_path(current_user), class: 'button  button-clear' %>
+        <%= link_to 'Se déconnecter', user_session_path(current_user), method: :delete, class: 'button  button-clear' %>
+      <% else %>
+        <%= link_to 'Se connecter', new_user_session_path, class: 'button  button-clear' %>
+      <% end %>
 
-    <%= yield %>
+
+    </nav>
+
+   <div class="container">
+     <%= yield %>
+   </div>
+
   </body>
 </html>
