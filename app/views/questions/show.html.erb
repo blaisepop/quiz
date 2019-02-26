@@ -29,22 +29,23 @@
     <% end %>
   </tbody>
 </table>
-<h2>Répondre à la question</h2>
+<% if current_user %>
 
-<%= form_with(model: Response.new, local: true) do |form| %>
+  <h2>Répondre à la question</h2>
 
+  <%= form_with(model: Response.new, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :content %>
+      <%= form.text_field :content %>
+    </div>
+    <%= form.hidden_field :question_id, value:@question.id %>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-
- <%= form.hidden_field :question_id, value:@question.id %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
+<% else %>
+<p>Pour ajouter une réponse vous avez besoin de <%= link_to 'vous connecter', new_user_session_path %> </p>
 <% end %>
 
 
