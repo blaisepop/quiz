@@ -13,11 +13,17 @@
 
     <nav class='navbar'>
       <%= link_to questions_path, class: 'button  button-outline' do %>
-        Quiz <small>by Blaise</small>
+      Quiz <small>by Blaise</small>
       <% end %>
       <%= link_to 'Les questions',questions_path, class: 'button  button-clear' %>
       <%= link_to 'Les réponses',responses_path, class: 'button  button-clear' %>
       <%= link_to 'Comptes',users_path, class: 'button  button-clear' %>
+      <% if current_user %>
+        <%= link_to current_user.email, user_path(current_user.id), class: 'button  button-clear' %>
+        <%= link_to 'Comptes', user_session_path(current_user.id),  method: :delete, class: 'button  button-clear' %>
+      <% else %>
+        <%= link_to 'Se connecter', new_user_session_path, class: 'button  button-clear' %>
+      <% end %>
     </nav>
 
    <div class="container">
