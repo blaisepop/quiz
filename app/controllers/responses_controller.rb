@@ -1,5 +1,6 @@
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
+  before_action :only_logged, only: [:new, :create , :edit, :update, :destroy ]
 
   # GET /responses
   # GET /responses.json
@@ -71,5 +72,9 @@ class ResponsesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def response_params
       params.require(:response).permit(:content, :question_id)
+    end
+    
+    def only_logged
+      redirect_to new_user_session_path if current_user.nil?
     end
 end
