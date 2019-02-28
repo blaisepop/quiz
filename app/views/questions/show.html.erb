@@ -12,6 +12,7 @@
     <tr>
       <th>Content</th>
       <th>Réponse correcte</th>
+      <th>User Id</th>
 
     </tr>
   </thead>
@@ -25,6 +26,7 @@
         <% else %>
           <td>La réponse est incorrecte</td>
         <% end %>
+        <td><%= link_to response.user.email, response.user unless response.user.nil? %></td>
       </tr>
     <% end %>
   </tbody>

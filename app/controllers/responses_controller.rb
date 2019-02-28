@@ -25,6 +25,7 @@ class ResponsesController < ApplicationController
   # POST /responses.json
   def create
     @response = Response.new(response_params)
+    @response.user = current_user
 
     respond_to do |format|
       if @response.save
