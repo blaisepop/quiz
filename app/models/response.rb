@@ -2,6 +2,7 @@ require 'fuzzystringmatch'
 
 class Response < ApplicationRecord
 	belongs_to :question
+	belongs_to :user
 	validates :content, length: {minimum:2}
 	def good?
 		return false if self.content.nil?
