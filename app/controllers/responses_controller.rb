@@ -1,6 +1,7 @@
 class ResponsesController < ApplicationController
   before_action :set_response, only: [:show, :edit, :update, :destroy]
   before_action :only_logged, only: [:new, :create , :edit, :update, :destroy ]
+  before_action :check_owner, only: [:edit, :update, :destroy]
 
   # GET /responses
   # GET /responses.json
@@ -73,8 +74,13 @@ class ResponsesController < ApplicationController
     def response_params
       params.require(:response).permit(:content, :question_id)
     end
-    
+
     def only_logged
       redirect_to new_user_session_path if current_user.nil?
     end
+
+    def check_owner
+      redirect_to new_user_session_path unless @response.user_id==current_user.id
+    end
+    
 end
