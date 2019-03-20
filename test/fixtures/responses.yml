@@ -3,20 +3,25 @@
 one:
   content: MyString
   question: one
+  user: one
 
 two:
   content: MyString
   question: two
+  user: one
 
 
 valid_response:
   content: Destiny's child
   question: two
+  user: one
 
 bad_response:
   content: wxc
   question: two
+  user: one
 
 almost_valid_response:
   content: Destiny's chile
   question: two
+  user: one

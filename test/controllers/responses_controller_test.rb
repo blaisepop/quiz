@@ -12,11 +12,13 @@ class ResponsesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
+    login(users(:one))
     get new_response_url
     assert_response :success
   end
 
   test "should create response" do
+    login(users(:one))
     assert_difference('Response.count') do
       post responses_url, params: { response: { content: @resp.content, question_id: @resp.question_id } }
     end
@@ -30,17 +32,19 @@ class ResponsesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
+    login(users(:one))
     get edit_response_url(@resp)
     assert_response :success
   end
 
   test "should update response" do
-    puts @resp.content.inspect
+    login(users(:one))
     patch response_url(@resp), params: { response: { content: @resp.content, question_id: @resp.question_id } }
     assert_redirected_to response_url(@resp)
   end
 
   test "should destroy response" do
+    login(users(:one))
     assert_difference('Response.count', -1) do
       delete response_url(@resp)
     end
