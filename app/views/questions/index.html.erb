@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>Contenu de la question</th>
+      <th>Créateur</th>
       <th>Actions</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +16,7 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= question.title %></td>
+        <td><%= link_to question.user.email, question.user if question.user !=nil %></td> 
         <td><%= link_to 'Voir', question %></td>
         <td><%= link_to 'Editer', edit_question_path(question) %></td>
         <td><%= link_to 'Supprimer', question, method: :delete, data: { confirm: 'Etes-vous sûr?' } %></td>
