@@ -3,7 +3,9 @@
 one:
   title: MyString
   valid_response: Destiny's child
+  user: one
 
 two:
   title: MyString
   valid_response: Destiny's child
+  user: one
