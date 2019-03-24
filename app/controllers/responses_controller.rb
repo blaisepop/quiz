@@ -75,12 +75,8 @@ class ResponsesController < ApplicationController
       params.require(:response).permit(:content, :question_id)
     end
 
-    def only_logged
-      redirect_to new_user_session_path if current_user.nil?
-    end
-
     def check_owner
       redirect_to new_user_session_path unless @response.user_id==current_user.id
     end
-    
+
 end
