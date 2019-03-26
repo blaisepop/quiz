@@ -33,7 +33,11 @@ class ResponsesController < ApplicationController
       if @response.save
         format.html {
           # todo: find a question to redirect
-          redirect_to Question.last, notice: 'Response was successfully created.'
+          if @response.good?
+            redirect_to Question.last, notice: 'bonne réponse, question suivante'
+          else
+            redirect_to @response.question, notice: 'Essaie encore !'
+          end
         }
         format.json { render :show, status: :created, location: @response }
       else
