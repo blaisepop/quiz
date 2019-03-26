@@ -28,7 +28,7 @@ class ResponsesControllerTest < ActionDispatch::IntegrationTest
       post responses_url, params: { response: { content: @resp.content, question_id: @resp.question_id } }
     end
 
-    assert_redirected_to response_url(Response.last)
+    assert_redirected_to question_url(Question.last)
   end
 
   test "should forbid create response" do
