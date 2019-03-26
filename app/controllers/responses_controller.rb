@@ -34,7 +34,7 @@ class ResponsesController < ApplicationController
         format.html {
           # todo: find a question to redirect
           if @response.good?
-            redirect_to Question.last, notice: 'bonne réponse, question suivante'
+            redirect_to current_user.unanswered_questions.last, notice: 'bonne réponse, question suivante'
           else
             redirect_to @response.question, notice: 'Essaie encore !'
           end
