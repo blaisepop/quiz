@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: first question
   valid_response: Destiny's child
   user: one
 
 two:
-  title: MyString
+  title: second question
   valid_response: Destiny's child
   user: one

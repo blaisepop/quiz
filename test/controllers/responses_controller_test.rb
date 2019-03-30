@@ -32,12 +32,15 @@ class ResponsesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create right response" do
-    login(users(:one))
+    user = users(:three)
+    login(user)
     assert_difference('Response.count') do
       post responses_url, params: { response: { content: @resp.content, question_id: @resp.question_id } }
     end
 
-    assert_redirected_to question_url(Question.last)
+    puts user.unanswered_questions.inspect
+
+    assert_redirected_to question_url(user.unanswered_questions.last)
   end
 
   test "should forbid create response" do

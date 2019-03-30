@@ -34,7 +34,12 @@ class ResponsesController < ApplicationController
         format.html {
           # todo: find a question to redirect
           if @response.good?
-            redirect_to current_user.unanswered_questions.last, notice: 'bonne réponse, question suivante'
+            unanswered_quest_for_user = current_user.unanswered_questions
+            if unanswered_quest_for_user.empty?
+              redirect_to root_path,notice:"Vous avez terminé le jeu !"
+            else
+              redirect_to unanswered_quest_for_user.last, notice: 'Bonne réponse, question suivante'
+            end
           else
             redirect_to @response.question, notice: 'Essaie encore !'
           end
