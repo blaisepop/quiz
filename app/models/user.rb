@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
     # Filter all questions who user have no response on it
     def unanswered_questions
-      self.questions.reject do |question|
+      Question.all.reject do |question|
         responsers_id = question.responses.pluck(:user_id)
         responsers_id.include?(self.id)
       end
