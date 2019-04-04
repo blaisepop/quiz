@@ -7,8 +7,11 @@ class QuestionsController < ApplicationController
 
     #'rocks,electro'
     #tags like "%rocks%"
-
-    @questions = Question.where('tags like ?',  ("%" + params[:tags] + "%") )
+    if params[:tags].nil?
+      @questions = Question.all
+    else
+      @questions = Question.where('tags like ?',  ("%" + params[:tags] + "%") )
+    end
     #https://fr.wikiversity.org/wiki/Ruby/Autres_variables
   end
 
