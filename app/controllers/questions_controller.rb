@@ -4,7 +4,11 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+
+    #'rocks,electro'
+    #tags like "%rocks%"
+
+    @questions = Question.where('tags like ?',  ("%" + params[:tags] + "%") )
     #https://fr.wikiversity.org/wiki/Ruby/Autres_variables
   end
 
