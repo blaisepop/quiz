@@ -16,7 +16,11 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= question.title %></td>
-        <td><%= question.tags %></td>
+        <td>
+          <% question.tags.split(',').each do |tag| %>
+            <span class="question_tag"><%=tag%></span>
+          <% end unless question.tags.nil? %>
+        </td>
         <td><%= link_to 'Voir', question %></td>
         <td><%= link_to 'Editer', edit_question_path(question) %></td>
         <td><%= link_to 'Supprimer', question, method: :delete, data: { confirm: 'Etes-vous sûr?' } %></td>
