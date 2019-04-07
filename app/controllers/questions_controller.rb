@@ -4,7 +4,6 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-
     #'rocks,electro'
     #tags like "%rocks%"
     if params[:tags].nil?
@@ -12,6 +11,10 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.where('tags like ?',  ("%" + params[:tags] + "%") )
     end
+    # todo: fetch tags from database
+    @tags = [
+
+    ]
     #https://fr.wikiversity.org/wiki/Ruby/Autres_variables
   end
 
