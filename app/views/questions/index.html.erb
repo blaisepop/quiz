@@ -2,9 +2,14 @@
 
 <h1>Questions</h1>
 
-<pre>
-  <%= params[:tags] %>
-</pre>
+<h2>filtres</h2>
+
+<%= form_with url: questions_path, method: :get, local: true do |form| %>
+  <%= form.text_field :tags %>
+  <%= form.submit %>
+<% end %>
+
+<h2>Liste</h2>
 
 <table>
   <thead>
