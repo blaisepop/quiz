@@ -12,4 +12,12 @@ class User < ApplicationRecord
     },
     length: { maximum: 100 }
 
+    # Filter all questions who user have no response on it
+    def unanswered_questions
+      Question.all.reject do |question|
+        responsers_id = question.responses.pluck(:user_id)
+        responsers_id.include?(self.id)
+      end
+    end
+
 end
