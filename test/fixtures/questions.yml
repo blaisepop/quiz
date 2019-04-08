@@ -3,7 +3,9 @@
 one:
   title: MyString
   valid_response: Destiny's child
+  tags: electro, music
 
 two:
   title: MyString
   valid_response: Destiny's child
+  tags: music
