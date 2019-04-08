@@ -11,11 +11,8 @@ class QuestionsController < ApplicationController
     else
       @questions = Question.where('tags like ?',  ("%" + params[:tags] + "%") )
     end
-    # todo: fetch tags from database
-    @tags = [
 
-    ]
-    #https://fr.wikiversity.org/wiki/Ruby/Autres_variables
+    @tags = Question.tags_options
   end
 
   # GET /questions/1
