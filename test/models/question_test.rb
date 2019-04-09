@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class QuestionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+   test "Get all existing tags for questions" do
+    assert_equal ["2000","girls","pop","usa"], Question.all_existing_tags
+  end
 end

@@ -3,7 +3,9 @@
 one:
   title: MyString
   valid_response: Destiny's child
+  tags: pop,usa
 
 two:
   title: MyString
   valid_response: Destiny's child
+  tags: 2000,girls,pop
