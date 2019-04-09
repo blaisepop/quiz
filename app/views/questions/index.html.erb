@@ -5,8 +5,7 @@
 <h2>filtres</h2>
 
 <%= form_with url: questions_path, method: :get, local: true do |form| %>
-  <%= form.text_field :tags %>
-  <%= select_tag "tags", options_for_select(@tags)%>
+  <%= select_tag "tags", options_for_select(Question.tags_options)%>
   <%= form.submit %>
 <% end %>
 

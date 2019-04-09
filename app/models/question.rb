@@ -10,10 +10,16 @@ class Question < ApplicationRecord
 	def self.all_existing_tags
 		Question.all
 						.pluck(:tags)
+						.compact
 						.map { |tags| tags.split(',') }
 						.flatten
 						.uniq
-						.compact
 						.sort
+	end
+
+	# @return [Array] someting like `[['electro', 'electro'], ['music', 'music']]`
+	def self.tags_options
+		Question.all_existing_tags
+						.map{ |tags| [tags, tags] }
 	end
 end
