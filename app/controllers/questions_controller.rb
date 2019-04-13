@@ -87,6 +87,6 @@ class QuestionsController < ApplicationController
     end
 
     def check_owner
-      redirect_to new_user_session_path unless @question.user_id==current_user.id
+      redirect_to new_user_session_path unless @question.user_id==current_user.id or current_user.admin?
     end
 end
