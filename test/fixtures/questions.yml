@@ -3,9 +3,12 @@
 one:
   title: first question
   valid_response: Destiny's child
+  tags: pop,usa
   user: one
+
 
 two:
   title: second question
   valid_response: Destiny's child
+  tags: 2000,girls,pop
   user: one
