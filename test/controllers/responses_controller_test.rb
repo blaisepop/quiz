@@ -68,6 +68,12 @@ class ResponsesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to response_url(@resp)
   end
 
+  test "should update response for admin" do
+    login(users(:admin))
+    patch response_url(@resp), params: { response: { content: @resp.content, question_id: @resp.question_id } }
+    assert_redirected_to response_url(@resp)
+  end
+
   test "should not update response" do
     login(users(:two))
     patch response_url(@resp), params: { response: { content: @resp.content, question_id: @resp.question_id } }
@@ -79,7 +85,14 @@ class ResponsesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Response.count', -1) do
       delete response_url(@resp)
     end
+  end
 
+
+  test "should destroy response for admin" do
+    login(users(:admin))
+    assert_difference('Response.count', -1) do
+      delete response_url(@resp)
+    end
     assert_redirected_to responses_url
   end
 
@@ -88,7 +101,6 @@ class ResponsesControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Response.count') do
       delete response_url(@resp)
     end
-
     assert_redirected_to (new_user_session_url)
   end
 end
