@@ -31,7 +31,19 @@ class ResponsesController < ApplicationController
 
     respond_to do |format|
       if @response.save
-        format.html { redirect_to @response, notice: 'Response was successfully created.' }
+        format.html {
+          # todo: find a question to redirect
+          if @response.good?
+            unanswered_quest_for_user = current_user.unanswered_questions
+            if unanswered_quest_for_user.empty?
+              redirect_to root_path,notice:"Vous avez terminé le jeu !"
+            else
+              redirect_to unanswered_quest_for_user.last, notice: 'Bonne réponse, question suivante'
+            end
+          else
+            redirect_to @response.question, notice: 'Essaie encore !'
+          end
+        }
         format.json { render :show, status: :created, location: @response }
       else
         format.html { render :new }
@@ -75,12 +87,8 @@ class ResponsesController < ApplicationController
       params.require(:response).permit(:content, :question_id)
     end
 
-    def only_logged
-      redirect_to new_user_session_path if current_user.nil?
-    end
-
     def check_owner
       redirect_to new_user_session_path unless @response.user_id==current_user.id
     end
-    
+
 end

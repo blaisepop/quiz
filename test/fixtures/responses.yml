@@ -25,3 +25,8 @@ almost_valid_response:
   content: Destiny's chile
   question: two
   user: one
+
+one_response_for_user_three:
+  content: one_response
+  question: one
+  user: three
