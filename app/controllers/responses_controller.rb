@@ -88,7 +88,7 @@ class ResponsesController < ApplicationController
     end
 
     def check_owner
-      redirect_to new_user_session_path unless @response.user_id==current_user.id or current_user.admin?
+      redirect_to new_user_session_path unless can?(:modify, @response)
     end
 
 end
