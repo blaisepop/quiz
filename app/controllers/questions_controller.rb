@@ -6,7 +6,17 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    #'rocks,electro'
+    #tags like "%rocks%"
+    if params[:tags].nil?
+      @questions = Question.all
+    else
+      @questions = Question.where('tags like ?',  ("%" + params[:tags] + "%") )
+    end
+    # todo: fetch tags from database
+    @tags = [
+
+    ]
     #https://fr.wikiversity.org/wiki/Ruby/Autres_variables
   end
 
@@ -73,10 +83,10 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:title,:valid_response)
+      params.require(:question).permit(:title,:valid_response,:tags)
     end
 
     def check_owner
-      redirect_to new_user_session_path unless @question.user_id==current_user.id
+      redirect_to new_user_session_path unless @question.user_id==current_user.id or current_user.admin?
     end
 end

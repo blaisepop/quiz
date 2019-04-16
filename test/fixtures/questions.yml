@@ -1,11 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
+  title: first question
   valid_response: Destiny's child
+  tags: pop,usa
   user: one
 
+
 two:
-  title: MyString
+  title: second question
   valid_response: Destiny's child
+  tags: 2000,girls,pop
   user: one

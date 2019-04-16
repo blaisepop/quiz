@@ -2,10 +2,20 @@
 
 <h1>Questions</h1>
 
+<h2>filtres</h2>
+
+<%= form_with url: questions_path, method: :get, local: true do |form| %>
+  <%= select_tag "tags", options_for_select(Question.tags_options)%>
+  <%= form.submit %>
+<% end %>
+
+<h2>Liste</h2>
+
 <table>
   <thead>
     <tr>
       <th>Contenu de la question</th>
+      <th>Tags</th>
       <th>Créateur</th>
       <th>Actions</th>
       <th colspan="3"></th>
@@ -16,6 +26,11 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= question.title %></td>
+        <td>
+          <% question.tags.split(',').each do |tag| %>
+            <span class="question_tag"><%=tag%></span>
+          <% end unless question.tags.nil? %>
+        </td>
         <td><%= link_to question.user.email, question.user if question.user !=nil %></td> 
         <td><%= link_to 'Voir', question %></td>
         <td><%= link_to 'Editer', edit_question_path(question) %></td>

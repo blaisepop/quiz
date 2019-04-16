@@ -70,6 +70,19 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to question_url(@question)
   end
 
+  test "should update question for admin" do
+    login users(:admin)
+    patch question_url(@question), params: { question: { title: @question.title, valid_response:"text" } }
+    assert_redirected_to question_url(@question)
+  end
+
+  test "should destroy question for admin" do
+    login users(:admin)
+    assert_difference('Question.count', -1) do
+      delete question_url(@question)
+    end
+  end
+
   test "should destroy question" do
     login @question.user
     assert_difference('Question.count', -1) do
