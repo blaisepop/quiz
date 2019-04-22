@@ -2,7 +2,9 @@
 
 <p>
   <strong>Email:</strong>
-  <%= @user.email %>
+  <p><%= @user.email %></p>
+  <strong>Votre identifiant:</strong>
+  <p><%= @user.id %></p>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
