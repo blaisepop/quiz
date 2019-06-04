@@ -22,4 +22,9 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: postgresql-animated-25198
+  pool: 5
+  username: pyumfmdwvmymts
+  password: c55875d8d56f86977ce1976f67e1e609854222e6578055e52144dccc937a8c9c

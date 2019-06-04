@@ -35,10 +35,8 @@ class ResponsesControllerTest < ActionDispatch::IntegrationTest
     user = users(:three)
     login(user)
     assert_difference('Response.count') do
-      post responses_url, params: { response: { content: @resp.content, question_id: @resp.question_id } }
+      post responses_url, params: { response: { content: @resp.question.valid_response, question_id: @resp.question_id } }
     end
-
-    puts user.unanswered_questions.inspect
 
     assert_redirected_to question_url(user.unanswered_questions.last)
   end
